@@ -10,6 +10,7 @@ def load_data_from_postgres(query):
         conn=psycopg2.connect(host=os.getenv('DB_HOST'), dbname=os.getenv("DB_NAME"), user=os.getenv("DB_USER"), password=os.getenv("DB_PASSWORD"), port=os.getenv("DB_PORT"))
         
         df=pd.read_sql_query(query, conn)
+        pd.set_option('display.float_format', '{:.0f}'.format)
 
         conn.close()
         
